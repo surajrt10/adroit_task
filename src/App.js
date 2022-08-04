@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
-
+import {useState} from 'react'
+import TodoList from './TodoList';
+import AddTask from './AddTask';
 function App() {
+  const [Todos, setTodos] = useState([
+    {
+      id:1,
+      task:'pending task 1',
+      done:false
+    }
+  ])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Task List</h1>
+      <p>double click on list item to mark it done</p>
+      <p>Click on X to delete Task Item</p>
+      
+        <AddTask setTodos={setTodos}/>
+        <h3>-------------------</h3>
+        <TodoList setTodos={setTodos} Todos={Todos}/>
+
     </div>
   );
 }
